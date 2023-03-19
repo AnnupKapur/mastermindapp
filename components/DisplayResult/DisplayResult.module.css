@@ -1,0 +1,36 @@
+.container{
+	border: 2px solid var(--primary-color);
+	padding: 16px 16px;
+	width: 250px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.container > div{
+	border-radius: 20px;
+	height: 32px;
+	width: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--dark-gray);
+	font-weight: 800;
+	border: 2px solid;
+}
+
+.correct{
+	color: green;
+	border-color: green;
+}
+
+.halfCorrect{
+	color:yellow;
+	border-color: yellow;
+}
+
+.incorrect{
+	color: red;
+	border-color: red;
+}
