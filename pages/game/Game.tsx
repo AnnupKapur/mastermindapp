@@ -127,6 +127,11 @@ const Game = (props: Props) => {
 					/>
 				))}
 			</div>
+			<div className={styles.footer}>
+				<p>
+					This game was made by Annup Raj Kapur of Skittles.School Tuition
+				</p>
+			</div>
 		</div>
 	)
 }
