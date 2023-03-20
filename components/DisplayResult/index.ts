@@ -1,1 +1,1 @@
-export { default } from './DIsplayResult'
+export { default } from './DisplayResult'
