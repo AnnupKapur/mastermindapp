@@ -14,6 +14,8 @@ const Game = (props: Props) => {
 	const [arrComputerNumber, setarrComputerNumber] = useState<string[]>()
 	const [arrGuesses, setarrGuesses] = useState<Guess[]>();
 	const [bChecking, setbChecking] = useState<boolean>(false);
+	const [bLoading, setbLoading] = useState<boolean>(false);
+	const [bWinner, setbWinner] = useState(false);
 
 	const arrValidOptions = ['0','1','2','3','4','5','6','7','8','9'];
 
@@ -78,6 +80,17 @@ const Game = (props: Props) => {
 			const checkResult = funcCheckGuess(arrComputerNumber.join('') ,strUserInput);
 			funcAddToGuesses(strUserInput, checkResult.join(''));
 			setstrUserInput('');
+			setbLoading(true);
+		}
+	}
+
+	const funcHandleInputKeyboardAction = (objEvent:  React.KeyboardEvent<HTMLDivElement>) => {
+		switch(objEvent.key){
+			case 'Enter':
+				if(strUserInput?.length === 4){
+					funcHandleCheckButton();
+				}
+				break;
 		}
 	}
 
@@ -85,21 +98,41 @@ const Game = (props: Props) => {
 		setarrComputerNumber(funcCreateGameNumber());
 	},[])
 
+	useEffect(()=>{
+		if(bLoading){
+			setTimeout(()=>{
+				setbLoading(false)
+			}, 10)
+		}
+	},[bLoading])
+
 	useEffect(()=>{console.log(arrComputerNumber)},[arrComputerNumber])
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.input}>
-				<PinInput 
-					length={4} 
-					type="number"
-					value={strUserInput}
-					onChange={(e) => setstrUserInput(e)}
-					classNames={{
-						input: styles.pinsInput,
-						root: styles.pinsRoot
-					}}
-				/>
+			<div className={styles.input} data-result={arrGuesses ? arrGuesses[arrGuesses?.length-1].result : ''}>
+				{(arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result === '2222') && (
+					<Title order={2}>{`You Won in ${arrGuesses.length} guesses !!!`}</Title>
+				)}
+				{(
+					(!bLoading && !arrGuesses) || 
+					(!bLoading && arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result !== '2222') || 
+					(!bLoading && arrGuesses && arrGuesses.length === 0)
+				) && (
+					<PinInput
+						id='pins'
+						autoFocus
+						length={4} 
+						type="number"
+						value={strUserInput}
+						onChange={(e) => setstrUserInput(e)}
+						onKeyDown={funcHandleInputKeyboardAction}
+						classNames={{
+							input: styles.pinsInput,
+							root: styles.pinsRoot
+						}}
+					/>
+				)}
 				{funcValidInput() && (
 					<Button 
 						loading={bChecking}
@@ -115,8 +148,29 @@ const Game = (props: Props) => {
 						Check
 					</Button>
 				)}
-				{!funcValidInput() && (
+				{(
+					!funcValidInput() &&
+					(
+						!arrGuesses ||
+						(arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result !== '2222') ||
+						(arrGuesses && arrGuesses.length === 0)
+					)
+				) && (
 					<Title order={2}>Enter A Number</Title>
+				)}
+				{(
+					arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result === '2222'
+				) && (
+					<Button 
+						variant='outline'
+						uppercase
+						onClick={()=>setarrGuesses(undefined)}
+						classNames={{
+							root: styles.replayButtonRoot,
+						}}
+					>
+						Play Again
+					</Button>
 				)}
 			</div>
 			<div className={styles.guesses}>
