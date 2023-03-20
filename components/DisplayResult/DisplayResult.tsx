@@ -10,13 +10,13 @@ const DIsplayResult = ({
 	objGuess
 }: Props) => {
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-result={objGuess.result}>
 			{objGuess.guess.split('').map((char, index) => {
 				switch(objGuess.result[index]){
 					case '0':
 						return (
 							<div 
-								key={objGuess.id} 
+								key={`${objGuess.id}${index}`} 
 								className={styles.incorrect}
 							>
 								{char}
@@ -25,7 +25,7 @@ const DIsplayResult = ({
 					case '1':
 						return (
 							<div 
-								key={objGuess.id} 
+								key={`${objGuess.id}${index}`} 
 								className={styles.halfCorrect}
 							>
 								{char}
@@ -34,7 +34,7 @@ const DIsplayResult = ({
 					case '2':
 						return (
 							<div 
-								key={objGuess.id} 
+								key={`${objGuess.id}${index}`} 
 								className={styles.correct}
 							>
 								{char}
@@ -43,7 +43,7 @@ const DIsplayResult = ({
 					default:
 						return (
 							<div 
-								key={objGuess.id} 
+								key={`${objGuess.id}${index}`} 
 								className={styles.error}
 							>
 								X
@@ -51,6 +51,16 @@ const DIsplayResult = ({
 						)
 				}
 			})}
+			{objGuess.result === '2222' && (
+				<>
+					<div className={styles.winner_right}>
+						🥳
+					</div>
+					<div className={styles.winner_left}>
+						🥳
+					</div>
+				</>
+				)}
 		</div>
 	)
 }

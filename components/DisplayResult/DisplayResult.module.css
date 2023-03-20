@@ -1,11 +1,24 @@
 .container{
-	border: 2px solid var(--primary-color);
+	border: 2px solid var(--dark-dark-gray);
 	padding: 16px 16px;
 	width: 250px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
+	position: relative;
+}
+
+.container[data-result='2222']{
+	/* background-color: var(--primary-color); */
+	background-color: green;
+	border-color: green;
+}
+
+.container[data-result='2222'] > div{
+	background-color: green;
+	border-color: var(--dark-dark-gray);
+	color: var(--dark-dark-gray);
 }
 
 .container > div{
@@ -38,4 +51,20 @@
 .incorrect{
 	color: red;
 	border-color: red;
+}
+
+.winner_right{
+	position: absolute;
+	right: -50px;
+	border: none !important;
+	background: transparent !important;
+	font-size: 30px;
+}
+
+.winner_left{
+	position: absolute;
+	left: -50px;
+	border: none !important;
+	background: transparent !important;
+	font-size: 30px;
 }
