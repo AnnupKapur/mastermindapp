@@ -1,0 +1,46 @@
+.container{
+	background-color: var(--dark-gray);
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 1fr 3fr;
+}
+
+.input{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 40px;
+	background-color: var(--primary-color);
+	padding-bottom: 40px;
+}
+
+.pinsRoot{
+	transform: scale(1.5);
+}
+
+.pinsInput{
+	background-color: var(--dark-gray);
+	color: var(--primary-color);
+	font-weight: 800;
+}
+
+.checkButtonRoot{
+	border-color: var(--dark-gray);
+	color: var(--dark-gray);
+	background-color: var(--primary-color);
+}
+
+.checkButtonRoot[data-disabled]{
+	background-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+.guesses{
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 24px;
+	padding-top: 24px;
+}
