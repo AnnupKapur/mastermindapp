@@ -4,6 +4,7 @@ import styles from './Game.module.css'
 import DisplayResult from '../../components/DisplayResult'
 import { Guess } from '../../types/Guess'
 import cloneDeep from 'lodash/cloneDeep'
+import { funcCheckGuess } from '../../utils/funcCheckGuess'
 
 type Props = {}
 
@@ -73,16 +74,15 @@ const Game = (props: Props) => {
 	}
 
 	const funcHandleCheckButton = () => {
-		if(strUserInput){
-			const checkResult = funcProcessResult();
-			funcAddToGuesses(strUserInput, checkResult);
+		if(strUserInput && arrComputerNumber){
+			const checkResult = funcCheckGuess(arrComputerNumber.join('') ,strUserInput);
+			funcAddToGuesses(strUserInput, checkResult.join(''));
 			setstrUserInput('');
 		}
 	}
 
 	useEffect(()=>{
 		setarrComputerNumber(funcCreateGameNumber());
-		setarrGuesses([{id: crypto.randomUUID(), guess: '1234', result:'0102'}])
 	},[])
 
 	useEffect(()=>{console.log(arrComputerNumber)},[arrComputerNumber])

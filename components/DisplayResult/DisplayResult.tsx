@@ -12,7 +12,8 @@ const DIsplayResult = ({
 	return (
 		<div className={styles.container}>
 			{objGuess.guess.split('').map((char, index) => {
-					if(objGuess.result[index] === '0'){
+				switch(objGuess.result[index]){
+					case '0':
 						return (
 							<div 
 								key={objGuess.id} 
@@ -21,7 +22,7 @@ const DIsplayResult = ({
 								{char}
 							</div>
 						)
-					} else if(char === '1'){
+					case '1':
 						return (
 							<div 
 								key={objGuess.id} 
@@ -30,7 +31,7 @@ const DIsplayResult = ({
 								{char}
 							</div>
 						)
-					} else if(objGuess.result[index] === '2'){
+					case '2':
 						return (
 							<div 
 								key={objGuess.id} 
@@ -39,7 +40,16 @@ const DIsplayResult = ({
 								{char}
 							</div>
 						)
-					}
+					default:
+						return (
+							<div 
+								key={objGuess.id} 
+								className={styles.error}
+							>
+								X
+							</div>
+						)
+				}
 			})}
 		</div>
 	)

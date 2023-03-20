@@ -38,8 +38,8 @@
 
 .guesses{
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
 	align-items: center;
 	gap: 24px;
 	padding-top: 24px;

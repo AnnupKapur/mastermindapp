@@ -1,0 +1,1 @@
+export { funcCheckGuess } from './funcCheckGuess'
