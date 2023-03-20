@@ -9,7 +9,7 @@
 .input{
 	/* height: 20vh; */
 	position: fixed;
-	width: 100%;
+	width: 100vw;
 	top: 0;
 	display: flex;
 	flex-direction: column;
@@ -30,6 +30,7 @@
 	background-color: var(--dark-gray);
 	color: var(--primary-color);
 	font-weight: 800;
+	font-size: 20px;
 }
 
 .checkButtonRoot{
