@@ -1,0 +1,101 @@
+.container{
+	background-color: var(--dark-dark-gray);
+	padding: 40px;
+	border-radius: 4px;
+	box-shadow: 5px 5px 30px -10px black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	max-width: 60%;
+}
+
+@media (max-width: 600px) {
+	.container{
+		height: 100vh;
+		width: 100vw;
+		max-width: unset;
+	}
+}
+
+.title{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.howToPlay{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.colorsAll{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
+}
+
+.colorDetails{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	gap: 16px;
+	min-height: 32px;
+}
+
+.colorDetails > :first-child{
+	border-radius: 20px;
+	height: 32px;
+	width: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--dark-gray);
+	font-weight: 800;
+	border: 2px solid;
+}
+
+.green{
+	border-color:green !important;
+	color: green !important;
+}
+
+.yellow{
+	border-color:yellow !important;
+	color: yellow !important;
+}
+
+.red{
+	border-color:red !important;
+	color: red !important;
+}
+
+.colorDetails > :last-child{
+	flex-grow: 1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	min-height: 32px;
+}
+
+.buttonsContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-top: 16px;
+}
+
+.buttonPlayRoot{
+	border-color: var(--primary-color);
+}
