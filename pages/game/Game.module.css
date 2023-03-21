@@ -4,6 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	position: relative;
 }
 
 .input{
@@ -27,21 +28,21 @@
 }
 
 .pinsRoot{
-	transform: scale(1.5);
 }
 
 .pinsInput{
 	background-color: var(--dark-gray);
 	color: var(--primary-color);
 	font-weight: 800;
-	font-size: 20px;
+	font-size: 32px;
 }
 
 .checkButtonRoot{
-	border-color: var(--dark-gray);
+	margin-bottom: -15px;
+	border: 2px solid var(--dark-gray);
+	font-weight: 800;
 	color: var(--dark-gray);
 	/* background-color: var(--primary-color); */
-	transform: scale(1.5);
 }
 
 .checkButtonRoot[data-disabled]{
@@ -50,18 +51,17 @@
 }
 
 .replayButtonRoot{
+	margin-bottom: -15px;
 	color: green;
 	background-color: var(--dark-dark-gray);
 	border-color: var(--dark-dark-gray);
 	font-weight: 800;
-	transform: scale(1.5);
 }
 
 .replayButtonRoot:hover{
 	color: var(--dark-dark-gray);
 	border-color: var(--dark-dark-gray);
 	font-weight: 800;
-	transform: scale(1.5);
 }
 
 .guesses{
@@ -94,4 +94,31 @@
 .footer > p{
 	margin: 20px;
 	text-align: center;
+}
+
+.homeButton{
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	z-index: 10000;
+	height: 60px;
+	width: 60px;
+	background-color: var(--dark-dark-gray);
+}
+
+.homeButtonIcon{
+	color: var(--primary-color);
+	font-size: 40px;
+	transform: scale(1.4);
+}
+
+
+
+@media (max-width: 600px) {
+	.homeButton{
+		bottom: 112px;
+		top: unset;
+		left: unset;
+		right: 16px;
+	}
 }

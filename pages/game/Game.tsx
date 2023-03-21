@@ -1,10 +1,13 @@
-import { Button, PinInput, Title } from '@mantine/core'
+import { Button, PinInput, Title, ActionIcon } from '@mantine/core'
 import React, { useEffect, useState } from 'react'
 import styles from './Game.module.css'
 import DisplayResult from '../../components/DisplayResult'
 import { Guess } from '../../types/Guess'
 import cloneDeep from 'lodash/cloneDeep'
 import { funcCheckGuess } from '../../utils/funcCheckGuess'
+import Head from 'next/head'
+import { FaHome } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 
 type Props = {}
 
@@ -16,6 +19,7 @@ const Game = (props: Props) => {
 	const [bChecking, setbChecking] = useState<boolean>(false);
 	const [bLoading, setbLoading] = useState<boolean>(false);
 	const [bWinner, setbWinner] = useState(false);
+	const router = useRouter();
 
 	const arrValidOptions = ['0','1','2','3','4','5','6','7','8','9'];
 
@@ -109,7 +113,22 @@ const Game = (props: Props) => {
 	useEffect(()=>{console.log(arrComputerNumber)},[arrComputerNumber])
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container}>      
+			<Head>
+				<title>Play The Game</title>
+				{/* <link rel="icon" href="/favicon.ico" /> */}
+			</Head>
+			<Button
+				variant='filled'
+				radius='xl'
+				onClick={()=>router.push('/')}
+				classNames={{
+					root: styles.homeButton,
+					inner: styles.homeButtonIcon,
+				}}
+			>
+				<FaHome />
+			</Button>
 			<div className={styles.input} data-result={arrGuesses ? arrGuesses[arrGuesses?.length-1].result : ''}>
 				{(arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result === '2222') && (
 					<Title order={2}>{`You Won in ${arrGuesses.length} guesses !!!`}</Title>
@@ -122,6 +141,7 @@ const Game = (props: Props) => {
 					<PinInput
 						id='pins'
 						autoFocus
+						size='xl'
 						length={4} 
 						type="number"
 						value={strUserInput}
@@ -135,6 +155,7 @@ const Game = (props: Props) => {
 				)}
 				{funcValidInput() && (
 					<Button 
+						size='lg'
 						loading={bChecking}
 						loaderPosition='right'
 						variant='outline'
@@ -162,6 +183,7 @@ const Game = (props: Props) => {
 					arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result === '2222'
 				) && (
 					<Button 
+						size='lg'
 						variant='outline'
 						uppercase
 						onClick={()=>setarrGuesses(undefined)}
