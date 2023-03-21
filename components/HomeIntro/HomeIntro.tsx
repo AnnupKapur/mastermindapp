@@ -48,7 +48,7 @@ const HomeIntro = (props: Props) => {
 					classNames={{
 						root: styles.buttonPlayRoot
 					}}
-				>Lets Play</Button>
+				>Let&#39;s Play</Button>
 			</div>
 		</div>
 	)
