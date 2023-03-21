@@ -17,8 +17,9 @@
 	align-items: center;
 	gap: 40px;
 	background-color: var(--primary-color);
-	padding-bottom: 40px;
-	padding-top: 50px;
+	/* padding-top: 40px;
+	padding-bottom: 50px; */
+	height: 200px;
 	box-shadow: 0px 10px 10px -10px black;
 	z-index: 1000;
 }
@@ -65,7 +66,7 @@
 }
 
 .guesses{
-	margin-top: 25vh;
+	margin-top: 200px;
 	margin-bottom: 100px;
 	display: flex;
 	flex-grow: 1;
@@ -97,7 +98,7 @@
 }
 
 .homeButton{
-	position: absolute;
+	position: fixed;
 	top: 16px;
 	left: 16px;
 	z-index: 10000;
