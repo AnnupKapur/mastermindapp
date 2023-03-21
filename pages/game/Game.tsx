@@ -110,7 +110,8 @@ const Game = (props: Props) => {
 		}
 	},[bLoading])
 
-	useEffect(()=>{console.log(arrComputerNumber)},[arrComputerNumber])
+	//USED FOR DEVELOPMENT
+	// useEffect(()=>{console.log(arrComputerNumber)},[arrComputerNumber])
 
 	return (
 		<div className={styles.container}>      
