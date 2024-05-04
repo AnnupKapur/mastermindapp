@@ -117,7 +117,6 @@ const Game = (props: Props) => {
 		<div className={styles.container}>      
 			<Head>
 				<title>Play The Game</title>
-				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
 			<Button
 				variant='filled'
@@ -182,21 +181,24 @@ const Game = (props: Props) => {
 				)}
 				{(
 					arrGuesses && arrGuesses.length>0 && arrGuesses[arrGuesses.length-1].result === '2222'
-				) && (
-					<Button 
-						size='lg'
-						variant='outline'
-						uppercase
-						onClick={()=>setarrGuesses(undefined)}
-						classNames={{
-							root: styles.replayButtonRoot,
-						}}
-					>
-						Play Again
-					</Button>
-				)}
-			</div>
-			<div className={styles.guesses}>
+          ) && (
+            <Button 
+              size='lg'
+              variant='outline'
+              uppercase
+              onClick={()=>{
+                setarrComputerNumber(funcCreateGameNumber());
+                setarrGuesses(undefined)
+              }}
+              classNames={{
+                root: styles.replayButtonRoot,
+              }}
+              >
+              Play Again
+            </Button>
+        )}
+      </div>
+      <div className={styles.guesses}>
 				{arrGuesses?.map(objGuess => (
 					<DisplayResult 
 						key={objGuess.id}
